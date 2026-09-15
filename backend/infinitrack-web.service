@@ -1,0 +1,18 @@
+[Unit]
+Description=InfiniTrack Web App (API + built frontend, served together)
+After=network.target
+
+[Service]
+Type=simple
+User=infinitrack
+Group=infinitrack
+WorkingDirectory=/home/infinitrack/Desktop/InfiniTrack-App/backend
+# Uses the venv you create per the install steps below. If you installed
+# dependencies system-wide instead, change this to /usr/bin/uvicorn.
+ExecStart=/home/infinitrack/Desktop/InfiniTrack-App/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

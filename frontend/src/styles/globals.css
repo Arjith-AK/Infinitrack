@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+
+  --color-surface-dark: #0a0e1a;
+  --color-surface-card: rgba(15, 23, 42, 0.65);
+  --color-surface-glass: rgba(255, 255, 255, 0.06);
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+
+  --font-sans: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border-glass;
+  }
+
+  html {
+    @apply antialiased scroll-smooth;
+  }
+
+  body {
+    @apply bg-surface-dark text-white font-sans min-h-screen overflow-x-hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(59, 130, 246, 0.08), transparent);
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/30;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface-glass backdrop-blur-xl border border-border-glass rounded-2xl;
+  }
+
+  .glass-card {
+    @apply bg-surface-glass backdrop-blur-xl border border-border-glass rounded-2xl shadow-lg shadow-black/20;
+  }
+
+  .glass-panel {
+    @apply bg-surface-card backdrop-blur-2xl border border-border-glass rounded-xl;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-xl
+      transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 hover:bg-white/15 text-white font-medium px-4 py-2 rounded-xl
+      border border-white/10 transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-500 text-white font-medium px-4 py-2 rounded-xl
+      transition-all duration-200 active:scale-[0.98];
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white
+      placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-500/50
+      focus:border-brand-500/50 transition-all;
+  }
+
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-dot-online {
+    @apply bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)];
+  }
+
+  .status-dot-warning {
+    @apply bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.6)];
+  }
+
+  .status-dot-error {
+    @apply bg-red-400 shadow-[0_0_8px_rgba(248,113,113,0.6)];
+  }
+}
+

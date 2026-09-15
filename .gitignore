@@ -1,0 +1,12 @@
+.DS_Store
+
+# Python
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.egg-info/
+backend/.env
+
+# Editors
+.vscode/
+.idea/
