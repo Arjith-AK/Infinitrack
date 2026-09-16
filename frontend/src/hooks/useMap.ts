@@ -54,7 +54,7 @@ interface UseMapOptions {
 
 export function useMap({
   containerRef,
-  center = { lat: 28.6139, lng: 77.209 },
+  center = { lat: 11.455028, lng: 77.302528 }, // 11°27'18.1"N 77°18'09.1"E
   zoom = 18,
   mapStyle = 'satellite',
   onPolygonChange,
