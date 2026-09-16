@@ -5,14 +5,12 @@ import { calculatePolygonMetrics } from '@/utils/geo/polygonMetrics';
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
-// 'hybrid' (satellite + Google's road/path/POI vector overlay) can render
-// unrelated real-world features -- footpaths, property lines, place
-// outlines -- directly on top of the ground the user is trying to mark,
-// which is easy to mistake for something the app drew. Plain 'satellite'
-// is pure imagery with no overlay, so nothing but the actual generated
-// field lines and the drawn boundary ever appears on the map.
+// 'hybrid' (satellite + Google's road/place-label overlay) is what gives
+// buildings, shops, schools, and roads their names on top of the imagery --
+// worth the small chance that, at some specific site, an unrelated map
+// feature (a footpath, a parcel outline) renders on top of the ground too.
 const MAP_TYPE_IDS: Record<MapStyle, google.maps.MapTypeId | string> = {
-  satellite: 'satellite',
+  satellite: 'hybrid',
   terrain: 'terrain',
   street: 'roadmap',
 };
